@@ -13,10 +13,9 @@ class UsersController < ApplicationController
       json.map do |usuario|
         puts usuario["id"]
         @users << User.new(id: "#{usuario["id"]}", userName: "#{usuario["nombreUsuario"]}", password: "#{usuario["password"]}", admin: "#{usuario["admin"]}")
-        # User.create(id: "#{usuario["id"]}", userName: "#{usuario["nombreUsuario"]}", password: "#{usuario["password"]}", admin: "#{usuario["admin"]}")
       end
     end
-    # @users = User.all
+    
   end
 
   def list_registries

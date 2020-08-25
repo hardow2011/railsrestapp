@@ -15,6 +15,19 @@ class RegistriesController < ApplicationController
   # GET /registries/new
   def new
     @registry = Registry.new
+
+    @users = []
+
+    response = RestClient.get 'https://proyectofinal.planodelta.digital/api/usuarios'
+    json = JSON.parse response
+    
+    if !json.nil?
+      json.map do |usuario|
+        puts usuario["id"]
+        @users << User.new(id: "#{usuario["id"]}", userName: "#{usuario["nombreUsuario"]}", password: "#{usuario["password"]}", admin: "#{usuario["admin"]}")
+      end
+    end
+
   end
 
   # GET /registries/1/edit
@@ -26,15 +39,9 @@ class RegistriesController < ApplicationController
   def create
     @registry = Registry.new(registry_params)
 
-    respond_to do |format|
-      if @registry.save
-        format.html { redirect_to @registry, notice: 'Registry was successfully created.' }
-        format.json { render :show, status: :created, location: @registry }
-      else
-        format.html { render :new }
-        format.json { render json: @registry.errors, status: :unprocessable_entity }
-      end
-    end
+    RestClient.post 'https://proyectofinal.planodelta.digital/api/usuarios', @registry.to_json, {content_type: :json, accept: :json}
+
+    format.html { render :new }
   end
 
   # PATCH/PUT /registries/1
