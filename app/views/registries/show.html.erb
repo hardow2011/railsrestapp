@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @registry.name %>
+</p>
+
+<p>
+  <strong>Educationlevel:</strong>
+  <%= @registry.educationLevel %>
+</p>
+
+<p>
+  <strong>Latitude:</strong>
+  <%= @registry.latitude %>
+</p>
+
+<p>
+  <strong>Longitude:</strong>
+  <%= @registry.longitude %>
+</p>
+
+<p>
+  <strong>Users:</strong>
+  <%= @registry.users_id %>
+</p>
+
+<%= link_to 'Edit', edit_registry_path(@registry) %> |
+<%= link_to 'Back', registries_path %>

@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Base64picture:</strong>
+  <%= @picture.base64Picture %>
+</p>
+
+<p>
+  <strong>Registry:</strong>
+  <%= @picture.registry_id %>
+</p>
+
+<%= link_to 'Edit', edit_picture_path(@picture) %> |
+<%= link_to 'Back', pictures_path %>
