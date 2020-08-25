@@ -4,7 +4,21 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    @users = []
+
+    response = RestClient.get 'https://proyectofinal.planodelta.digital/api/usuarios'
+    json = JSON.parse response
+
+    # usuarios = data['User'].map{ |usr| User.new(usr['id'], usr['nombreUsuario']), usr['password'], usr['admin']}
+
+    # byebug
+
+    if !json.nil?
+      json.map do |usuario|
+        @users << User.new(id: "#{usuario["id"]}", userName: "#{usuario["nombreUsuario"]}", password: "#{usuario["password"]}", admin: "#{usuario["admin"]}")
+      end
+    end
+
   end
 
   # GET /users/1
