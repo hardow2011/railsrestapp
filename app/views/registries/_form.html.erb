@@ -11,32 +11,40 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+  <div class="form-group">
+    <%= form.label :name, "Nombre" %>
+    <%= form.text_field :name, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.label :educationLevel %>
-    <%= form.text_field :educationLevel %>
+  <div class="form-group">
+    <%= form.label :educationLevel, "Nivel escolar" %>
+    <%= form.select :educationLevel, ['Básico', 'Medio', 'Grado Universitario', 'Postgrado', 'Doctorado'], {},{ class: "form-control"} %>
   </div>
 
-  <div class="field">
-    <%= form.label :latitude %>
-    <%= form.text_field :latitude %>
+  <div class="row">
+    <div class="col">
+      <div class="form-group">
+        <%= form.label :latitude, "Latitud" %>
+        <%= form.text_field :latitude, class: "form-control" %>
+      </div>
+    </div>
+    <div class="col">
+      <div class="form-group">
+        <%= form.label :longitude, "Longitud" %>
+        <%= form.text_field :longitude, class: "form-control" %>
+      </div>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :longitude %>
-    <%= form.text_field :longitude %>
-  </div>
 
-  <div class="field">
+
+  <div class="form-group">
     <%= form.label :users_id %>
-    <%= form.text_field :users_id %>
+    <%= form.select :users_id, @users.pluck(:userName, :id), {},{ class: "form-control"} %>
+    
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class: "btn btn-success" %>
   </div>
 <% end %>
