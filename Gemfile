@@ -25,6 +25,12 @@ gem 'jbuilder', '~> 2.7'
 # Cliente Rest
 gem 'rest-client', '~> 2.1'
 
+#Bootstrap
+gem 'bootstrap', '~> 4.5', '>= 4.5.2'
+
+#JQuery
+gem 'jquery-rails', '~> 4.4'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
