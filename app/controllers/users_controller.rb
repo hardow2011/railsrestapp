@@ -8,17 +8,37 @@ class UsersController < ApplicationController
 
     response = RestClient.get 'https://proyectofinal.planodelta.digital/api/usuarios'
     json = JSON.parse response
-
-    # usuarios = data['User'].map{ |usr| User.new(usr['id'], usr['nombreUsuario']), usr['password'], usr['admin']}
-
-    # byebug
-
+    
     if !json.nil?
       json.map do |usuario|
+        puts usuario["id"]
         @users << User.new(id: "#{usuario["id"]}", userName: "#{usuario["nombreUsuario"]}", password: "#{usuario["password"]}", admin: "#{usuario["admin"]}")
+        # User.create(id: "#{usuario["id"]}", userName: "#{usuario["nombreUsuario"]}", password: "#{usuario["password"]}", admin: "#{usuario["admin"]}")
       end
     end
+    # @users = User.all
+  end
 
+  def list_registries
+
+    # byebug
+    
+    @registries = []
+
+    response = RestClient.get 'https://proyectofinal.planodelta.digital/api/usuarios/'+params[:id]+'/formularios'
+    json = JSON.parse response
+    
+    if !json.nil?
+      json.map do |registro|
+        puts registro["id"]
+        registry = Registry.new(id: "#{registro["id"]}", name: "#{registro["nombre"]}", educationLevel: "#{registro["nivelEscolar"]}", latitude: "#{registro["latitud"]}", longitude: "#{registro["longitud"]}")
+        picture = Picture.new(id:  "#{registro["foto"]["id"]}", base64Picture: "#{registro["foto"]["fotoBase64"]}", registry: registry)
+        @registries << registry
+
+        # User.create(id: "#{usuario["id"]}", userName: "#{usuario["nombreUsuario"]}", password: "#{usuario["password"]}", admin: "#{usuario["admin"]}")
+      end
+    end
+    
   end
 
   # GET /users/1

@@ -1,0 +1,29 @@
+<h1>Formularios</h1>
+
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Nivel Escolar</th>
+        <th>Longitud</th>
+        <th>Latitud</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @registries.each do |registry| %>
+        <tr>
+          <td><%= registry.name %></td>
+          <td><%= registry.educationLevel %></td>
+          <td><%= registry.latitude %></td>
+          <td><%= registry.longitude %></td>
+        </tr>
+        <tr>
+            <td colspan="2"><img width=275px; width=270px; src="<%= registry.picture.base64Picture %>" alt="No hay foto"></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<br>
