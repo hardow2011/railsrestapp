@@ -12,9 +12,12 @@
 
 ActiveRecord::Schema.define(version: 3) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "pictures", force: :cascade do |t|
     t.text "base64Picture"
-    t.integer "registry_id", null: false
+    t.bigint "registry_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["registry_id"], name: "index_pictures_on_registry_id"
@@ -25,7 +28,7 @@ ActiveRecord::Schema.define(version: 3) do
     t.string "educationLevel"
     t.float "latitude"
     t.float "longitude"
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_registries_on_user_id"
