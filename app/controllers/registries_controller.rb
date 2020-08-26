@@ -76,6 +76,6 @@ class RegistriesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def registry_params
-      params.require(:registry).permit(:name, :educationLevel, :latitude, :longitude, :users_id)
+      params.require(:registry).permit(:name, :educationLevel, :latitude, :longitude, :user_id)
     end
 end

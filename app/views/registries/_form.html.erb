@@ -39,12 +39,16 @@
 
 
   <div class="form-group">
-    <%= form.label :users_id %>
-    <%= form.select :users_id, @users.pluck(:userName, :id), {},{ class: "form-control"} %>
+    <%= form.label :user_id %>
+    <%= form.select :user_id, @users.pluck(:userName, :id), {},{ class: "form-control"} %>
     
   </div>
 
-  <div class="actions">
-    <%= form.submit class: "btn btn-success" %>
+  <div class="actions" style="float:left">
+    <%= form.submit "Registrar formulario", class: "btn btn-success" %>
   </div>
+
+    <div style="float:right">
+      <%= link_to 'Listado de usuarios', users_path, {class: "btn btn-info"} %>
+    </div>
 <% end %>

@@ -17,7 +17,7 @@
         <tr>
           <td><%= user.userName %></td>
           <td><%= user.admin %></td>
-          <td><%= link_to 'Mostrar formularios', list_registries_user_path(user) %></td>
+          <td><%= link_to 'Mostrar formularios', list_registries_user_path(user), {class: "btn btn-info"} %></td>
         </tr>
       <% end %>
     </tbody>
@@ -25,3 +25,6 @@
 </div>
 
 <br>
+  <div>
+    <%= link_to 'Nuevo registro', new_registry_path, {class: "btn btn-success"} %>
+  </div>

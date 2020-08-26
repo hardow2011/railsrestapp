@@ -30,13 +30,14 @@ class UsersController < ApplicationController
       json.map do |registro|
         puts registro["id"]
         registry = Registry.new(id: "#{registro["id"]}", name: "#{registro["name"]}", educationLevel: "#{registro["educationLevel"]}", latitude: "#{registro["latitude"]}", longitude: "#{registro["longitude"]}")
-        picture = Picture.new(id:  "#{registro["foto"]["id"]}", base64Picture: "#{registro["foto"]["fotoBase64"]}", registry: registry)
+        if !registro["foto"].nil?
+          picture = Picture.new(id:  "#{registro["foto"]["id"]}", base64Picture: "#{registro["foto"]["fotoBase64"]}", registry: registry)
+        end
         @registries << registry
         
         # User.create(id: "#{usuario["id"]}", userName: "#{usuario["nombreUsuario"]}", password: "#{usuario["password"]}", admin: "#{usuario["admin"]}")
       end
     end
-    byebug
   end
 
   # GET /users/1

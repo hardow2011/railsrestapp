@@ -23,12 +23,12 @@ ActiveRecord::Schema.define(version: 3) do
   create_table "registries", force: :cascade do |t|
     t.string "name"
     t.string "educationLevel"
-    t.integer "latitude"
-    t.integer "longitude"
-    t.integer "users_id", null: false
+    t.float "latitude"
+    t.float "longitude"
+    t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["users_id"], name: "index_registries_on_users_id"
+    t.index ["user_id"], name: "index_registries_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -40,5 +40,5 @@ ActiveRecord::Schema.define(version: 3) do
   end
 
   add_foreign_key "pictures", "registries"
-  add_foreign_key "registries", "users", column: "users_id"
+  add_foreign_key "registries", "users"
 end

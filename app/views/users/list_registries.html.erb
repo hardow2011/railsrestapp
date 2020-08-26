@@ -1,7 +1,9 @@
 <h1>Formularios</h1>
-
+  <div>
+    <%= link_to 'Listado de usuarios', users_path, {class: "btn btn-info"} %>
+  </div>
 <div class="table-responsive">
-  <table class="table table-striped">
+  <table class="table table-bordered">
     <thead>
       <tr>
         <th>Nombre</th>
@@ -19,7 +21,7 @@
           <td><%= registry.longitude %></td>
         </tr>
         <tr>
-            <td colspan="2"><img width=275px; width=270px; src="<%= registry.picture.base64Picture %>" alt="No hay foto"></td>
+            <td colspan="2"><img width=275px; width=270px; src=" <%if !registry.picture.nil?%><%= registry.picture.base64Picture %><% end %>" alt="No hay foto"></td>
         </tr>
       <% end %>
     </tbody>
