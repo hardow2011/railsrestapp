@@ -20,24 +20,23 @@ class UsersController < ApplicationController
 
   def list_registries
 
-    # byebug
     
     @registries = []
-
+    
     response = RestClient.get 'https://proyectofinal.planodelta.digital/api/usuarios/'+params[:id]+'/formularios'
     json = JSON.parse response
     
     if !json.nil?
       json.map do |registro|
         puts registro["id"]
-        registry = Registry.new(id: "#{registro["id"]}", name: "#{registro["nombre"]}", educationLevel: "#{registro["nivelEscolar"]}", latitude: "#{registro["latitud"]}", longitude: "#{registro["longitud"]}")
+        registry = Registry.new(id: "#{registro["id"]}", name: "#{registro["name"]}", educationLevel: "#{registro["educationLevel"]}", latitude: "#{registro["latitude"]}", longitude: "#{registro["longitude"]}")
         picture = Picture.new(id:  "#{registro["foto"]["id"]}", base64Picture: "#{registro["foto"]["fotoBase64"]}", registry: registry)
         @registries << registry
-
+        
         # User.create(id: "#{usuario["id"]}", userName: "#{usuario["nombreUsuario"]}", password: "#{usuario["password"]}", admin: "#{usuario["admin"]}")
       end
     end
-    
+    byebug
   end
 
   # GET /users/1

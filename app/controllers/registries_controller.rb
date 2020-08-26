@@ -41,7 +41,7 @@ class RegistriesController < ApplicationController
 
     RestClient.post 'https://proyectofinal.planodelta.digital/api/usuarios', @registry.to_json, {content_type: :json, accept: :json}
 
-    format.html { render :new }
+    redirect_to action: "new"
   end
 
   # PATCH/PUT /registries/1

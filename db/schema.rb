@@ -23,8 +23,8 @@ ActiveRecord::Schema.define(version: 3) do
   create_table "registries", force: :cascade do |t|
     t.string "name"
     t.string "educationLevel"
-    t.float "latitude"
-    t.float "longitude"
+    t.integer "latitude"
+    t.integer "longitude"
     t.integer "users_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
